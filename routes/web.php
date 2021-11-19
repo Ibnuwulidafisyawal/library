@@ -22,15 +22,15 @@ use function PHPUnit\Framework\returnSelf;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+}); 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('dashboards', function () {
+    return view('dashboards');
+})->middleware(['auth'])->name('dashboards');
 
+
+Route::resource('dashboards', DataLibraryController::class);
 Route::resource('students', StudentController::class);
-    // Route::get('/students/search', StudentController::class);
-
 Route::resource('studentGroups', StudentGroupController::class);
 Route::resource('rayons', RayonController::class);
 Route::resource('publishers', PublisherController::class);
