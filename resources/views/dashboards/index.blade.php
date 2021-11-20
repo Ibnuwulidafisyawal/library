@@ -33,7 +33,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Book Data</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $books }} </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -51,7 +51,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Publisher Data</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $publishers }} </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-address-book fa-2x text-gray-300"></i>
@@ -69,7 +69,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Student data</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $students }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -88,7 +88,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Rayons data</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $rayons }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-location-arrow fa-2x text-gray-300"></i>
@@ -105,7 +105,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                     study group data</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $studentGroups }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
@@ -122,7 +122,7 @@
                             <div class="col mr-2"> 
                                 <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                     borrowings data</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $borrowings }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-edit fa-2x text-gray-300"></i>
@@ -150,10 +150,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($rayons as $rayon)
+        @foreach ($rayon ?? '' ?? ''s as $rayon ?? '' ?? '')
             <tr>
-                <td>{{ $rayon->name }}</td>
-                <td class="text-center">{{ $rayon->rayons_count }}</td>
+                <td>{{ $rayon ?? '' ?? ''->name }}</td>
+                <td class="text-center">{{ $rayon ?? '' ?? ''->rayons_count }}</td>
             </tr>
         @endforeach
     </tbody>

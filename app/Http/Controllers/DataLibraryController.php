@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Models\Rayon;
-use Illuminate\Http\Request;
+use App\Models\Book;
+use App\Models\Borrowing;
+use App\Models\Publisher;
+use App\Models\Student;
+use App\Models\StudentGroup;
+// use Illuminate\Http\Request;
 
 class DataLibraryController extends Controller
 {
@@ -13,15 +18,15 @@ class DataLibraryController extends Controller
      */
     public function index()
     {
-        return view('dashboards.index');
-        // $rayons = Rayon::latest()->paginate(5);
-        // return view('dashboards.index', compact('rayons'))->with('i', (request()->input('page', 1) -1) *5);
-        // $rayons = Rayon::withCount(['rayon'])->get();
-        // return view('dashboards.index', compact('rayons'));
-    }
-    public function rayon()
-    {
-    return $this->hasMany(Rayon::class);
+        $books = Book::count();
+        $borrowings = Borrowing::count();
+        $publishers = Publisher::count();
+        $rayons = Rayon::count();
+        $students = Student::count();
+        $studentGroups = StudentGroup::count();
+        
+
+        return view('dashboards.index',compact('rayons','borrowings','publishers','books','students','studentGroups'));
     }
    
 }
