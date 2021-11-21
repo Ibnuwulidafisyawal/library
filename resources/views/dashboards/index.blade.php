@@ -1,15 +1,4 @@
-{{-- <x-app-layout>  
-    
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-    </div>
-    
-</x-app-layout> --}}
 @extends('layouts.app')
 @section('content')
 {{-- <x-app-layout> --}}
@@ -18,7 +7,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Library</h1>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         </div>
 
         <!-- Content Row -->
@@ -131,30 +120,50 @@
                     </div>
                 </div>
             </div>
-            
-            
         </div>
         </form>
+
+
+
+                        <div class="">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Data </h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        </a>
+                                    </div>  
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Book
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Publisher
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
     </div>
+</form>
 
     
 
 {{-- </x-app-layout> --}}
 @endsection
-{{-- 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Rayon</th>
-            <th class="text-center">Rayon</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($rayon ?? '' ?? ''s as $rayon ?? '' ?? '')
-            <tr>
-                <td>{{ $rayon ?? '' ?? ''->name }}</td>
-                <td class="text-center">{{ $rayon ?? '' ?? ''->rayons_count }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table> --}}
