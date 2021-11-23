@@ -12,9 +12,17 @@ class RayonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rayons = Rayon::latest()->paginate(5);
+        $rayons = Rayon::where([
+            ['rayon', '!=', Null],
+            [function ($query) use ($request){
+                if (($search = $request->search)) {
+                    $query->orWhere('rayon', 'LIKE','%'.$search.'%')->get();
+                }    
+            }]
+        ])->orderBy('id','desc')->paginate(5);
+
 
         return view('rayons.index', compact('rayons'))->with('i', (request()->input('page', 1)-1) *5);
     }

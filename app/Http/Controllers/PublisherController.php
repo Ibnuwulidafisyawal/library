@@ -12,9 +12,17 @@ class PublisherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $publishers = Publisher::latest()->paginate(5);
+        $publishers = Publisher::where([
+            ['penerbit', '!=', Null],
+            [function ($query) use ($request){
+                if (($search = $request->search)) {
+                    $query->orWhere('penerbit', 'LIKE','%'.$search.'%')->get();
+                }    
+            }]
+        ])->orderBy('id','desc')->paginate(5);
+
         
         return view('publishers.index', compact('publishers'))->with('i', (request()->input('page', 1) -1) *5);
     }

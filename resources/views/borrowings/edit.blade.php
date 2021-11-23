@@ -2,13 +2,14 @@
   
 <x-app-layout>
 @section('content')
-    <div class="row">
+   
+    <div class="row  mx-auto" style="width: 400px">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Edit</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('borrowings.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('borrowings.index') }}"><i class="bi bi-arrow-left-circle"></i> Back</a>
             </div>
         </div>
     </div>
@@ -29,11 +30,11 @@
 
         @method('PUT')
         
-        <div class="row">
+        <div class="row mx-auto" style="width: 400px">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Peminjam</strong>
-                    <select class="form-control" name="nama_peminjam">
+                    <select class="form-control" name="nama_peminjam" id="nama_peminjam">
                         @foreach($students as $student)
                         <option value="{{$student->nama}}" @if($borrowing->nama_peminjam == $student->nama)selected @endif>{{$student->nama}}</option>
                         @endforeach
@@ -43,7 +44,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Judul buku</strong>
-                    <select class="form-control" name="judul_buku">
+                    <select class="form-control" name="judul_buku" id="judul_buku">
                         @foreach($books as $book)
                         <option value="{{$book->judul}}" @if($borrowing->judul_buku == $book->judul)selected @endif>{{$book->judul}}</option>
                         @endforeach
@@ -76,5 +77,18 @@
         </div>
         
     </form>
+
+    <script type="text/javascript">
+        $('#nama_peminjam').select2({
+            placeholder: 'Select a borrower name',
+            allowClear: true
+
+        });
+
+        $('#judul_buku').select2({
+            placeholder: 'Select a book title',
+            allowClear: true
+        });
+    </script>
 @endsection
 </x-app-layout>

@@ -150,7 +150,7 @@
                                             <i class="fas fa-circle text-success"></i> Publisher
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-info"></i> Student
                                         </span>
                                     </div>
                                 </div>

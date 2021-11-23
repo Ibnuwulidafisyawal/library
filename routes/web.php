@@ -5,10 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 
 use function PHPUnit\Framework\returnSelf;
-    
-// use app\Http\Controllers\StudentController;
-// use app\Http\Controllers\BookController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +26,7 @@ Route::get('dashboards', function () {
 
 
 Route::resource('dashboards', DataLibraryController::class);
+// Route::resource('dashboards.donutChart', DonutChartController::class,'donutChart');
 Route::resource('students', StudentController::class);
 Route::resource('studentGroups', StudentGroupController::class);
 Route::resource('rayons', RayonController::class);

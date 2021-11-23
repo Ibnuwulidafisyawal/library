@@ -45,7 +45,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group  col-md-18">
                         <strong>Rombel:</strong>
-                        <select class="form-control" name="rombel" >
+                        <select class="form-control" name="rombel" id="rombel">
                             <option value="" hidden></option>
                             @foreach($studentGroups as $studentGroup)
                             <option value="{{$studentGroup->rombel}}" @if($student->rombel == $studentGroup->rombel)selected @endif>{{$studentGroup->rombel}}</option>
@@ -56,7 +56,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group col-md-18">
                         <strong>Rayon:</strong>
-                        <select class="form-control" name="rayon">  
+                        <select class="form-control" name="rayon" id="rayon">  
                             <option value="" hidden></option>
                             @foreach($rayons as $rayon)
                         <option value="{{$rayon->rayon}}" @if($student->rayon == $rayon->rayon)selected @endif>{{$rayon->rayon}}</option>
@@ -70,5 +70,19 @@
         </div>
         
     </form>
+<script type="text/javascript">
+
+        $("#rombel").select2({
+              placeholder: "Select a Rombel",
+              allowClear: true
+          });
+  
+          $("#rayon").select2({
+              placeholder: "Select a Rayon",
+              allowClear: true
+          });
+</script>
+  
+  
 @endsection
 </x-app-layout>

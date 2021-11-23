@@ -14,9 +14,17 @@ class BorrowingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $borrowings = Borrowing::latest()->paginate(5);
+
+        $borrowings = Borrowing::where([
+            ['nama_peminjam', '!=', Null],
+            [function ($query) use ($request){
+                if (($search = $request->search)) {
+                    $query->orWhere('nama_peminjam', 'LIKE','%'.$search.'%')->get();
+                }    
+            }]
+        ])->orderBy('id','desc')->paginate(5);
 
         return view('borrowings.index', compact('borrowings'))->with('i', (request()->input('page', 1) -1) *5);
     }
@@ -76,7 +84,7 @@ class BorrowingController extends Controller
         $books = Book::all();
         $students = Student::all();
 
-        return view('borrowings.edit', compact('borrowings','books','students'));
+        return view('borrowings.edit', compact('borrowing','books','students'));
     }
 
     /**

@@ -14,9 +14,16 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
     {
-        $books = Book::latest()->paginate(5);   
+        $books = Book::where([
+            ['judul', '!=', Null],
+            [function ($query) use ($request){
+                if (($search = $request->search)) {
+                    $query->orWhere('judul', 'LIKE','%'.$search.'%')->get();
+                }    
+            }]
+        ])->orderBy('id','desc')->paginate(5);
 
         return view('books.index', compact('books'))->with('i',(request()->input('page',1) - 1) * 5);
         
@@ -107,4 +114,8 @@ class BookController extends Controller
         $book->delete();
             return redirect()->route('books.index')->with('Succes','Berhasil hapus');
     }
+
+
+  
 }
+

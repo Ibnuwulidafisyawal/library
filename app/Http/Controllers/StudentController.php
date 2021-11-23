@@ -131,12 +131,5 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('Success','Berhasil Hapus !!');
     }
 
-    public function search(Request $request)
-    {
-      
-        $search = $request->search;
-        
-        $students = Student::table('students')->where('nama','like',"%".$search."%")->paginate();
-        return view('students.index',['student' => $students]);
-    }
+   
 }   

@@ -18,6 +18,31 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
+    <div>   
+        <div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ route('studentGroups.index') }}" method="GET" role="search">
+
+                    <div class="input-group" >
+                        <span class="input-group-btn" >
+                            <button class="btn btn-info" type="submit" title="Search Rombel" style="border-radius: 0px">
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="" name="search" placeholder="Search Rombel" id="search" style="height: 38px; width: 20%;">
+                        <a href="{{ route('studentGroups.index') }}" class="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" title="Refresh page" style="border-radius: 0px">
+                                    <span class="fas fa-sync-alt"></span>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
      
     <table class="table table-bordered">
         <tr>

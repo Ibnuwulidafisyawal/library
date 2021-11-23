@@ -14,9 +14,16 @@ class StudentGroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $studentGroups = StudentGroup::latest()->paginate(5);
+        $studentGroups = StudentGroup::where([
+            ['rombel', '!=', Null],
+            [function ($query) use ($request){
+                if (($search = $request->search)) {
+                    $query->orWhere('rombel', 'LIKE','%'.$search.'%')->get();
+                }    
+            }]
+        ])->orderBy('id','desc')->paginate(5);
 
         return view('studentGroups.index',compact('studentGroups'))->with('i',(request()->input('page', 1) -1) *5);
     }

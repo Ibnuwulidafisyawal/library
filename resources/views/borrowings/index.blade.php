@@ -18,6 +18,31 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
+    <div>   
+        <div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ route('borrowings.index') }}" method="GET" role="search">
+
+                    <div class="input-group" >
+                        <span class="input-group-btn" >
+                            <button class="btn btn-info" type="submit" title="Search borrowings" style="border-radius: 0px">
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="" name="search" placeholder="Search borrowings" id="search" style="height: 38px; width: 20%;">
+                        <a href="{{ route('borrowings.index') }}" class="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" title="Refresh page" style="border-radius: 0px">
+                                    <span class="fas fa-sync-alt"></span>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
      
     <table class="table table-bordered">
         <tr>
@@ -38,7 +63,8 @@
             <td>{{ $borrowing->tgl_kembali }}</td>
             <td>{{ $borrowing->ket }}</td>
             <td>
-                <form action="{{ route('borrowings.destroy',$borrowing->id) }}" method="POST">
+                <form action="{{ route('borrowings.destroy',$borrowing->id) }}"  method="POST">
+                    
            
                     <a class="btn btn-primary" href="{{ route('borrowings.edit',$borrowing->id) }}">Edit</a>
      

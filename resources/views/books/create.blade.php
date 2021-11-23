@@ -47,7 +47,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group col-md-18">
                     <strong>Penerbit</strong>
-                    <select class="form-control" name="penerbit">
+                    <select class="form-control" name="penerbit" id="penerbit">
                     <option value="" hidden></option>
                     @foreach($publishers as $publisher)
                     <option value="{{$publisher->penerbit}}">{{$publisher->penerbit}}</option>
@@ -62,5 +62,12 @@
 </div>
      
 </form>
+
+<script type="text/javascript">
+    $('#penerbit').select2({
+        placeholder: "Select a publisher",
+        allowClear: true
+    });
+</script>
 @endsection
 </x-app-layout>

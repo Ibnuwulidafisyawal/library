@@ -44,8 +44,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group  col-md-18">
                     <strong>Rombel:</strong>
-                    <select class="form-control" name="rombel" >
+                    <select class="form-control" name="rombel" id="rombel">
                         <option value="" hidden></option>
+                        <option value=""></option>
                         @foreach($studentGroups as $studenGroup)
                         <option value="{{$studenGroup->rombel}}">{{$studenGroup->rombel}}</option>
                         @endforeach
@@ -55,7 +56,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group col-md-18">
                     <strong>Rayon:</strong>
-                    <select class="form-control" name="rayon">  
+                    <select class="form-control" name="rayon" id="rayon">  
                         <option value="" hidden></option>
                         @foreach($rayons as $rayon)
                         <option value="{{$rayon->rayon}}">{{$rayon->rayon}}</option>
@@ -63,11 +64,27 @@
                     </select>
                 </div>
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                     <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
         
     </form>
+
+<script type="text/javascript">
+
+      $("#rombel").select2({
+            placeholder: "Select a Rombel",
+            allowClear: true
+        });
+
+        $("#rayon").select2({
+            placeholder: "Select a Rayon",
+            allowClear: true
+        });
+</script>
+
+
 @endsection
 </x-app-layout>
