@@ -89,6 +89,7 @@
             placeholder: 'Select a book title',
             allowClear: true
         });
+        
     </script>
 @endsection
 </x-app-layout>
